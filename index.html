@@ -26,8 +26,8 @@
 						</div>
 						<nav>
 							<ul>
-								<li><a href="#intro">Intro</a></li>
-								<li><a href="#work">Work</a></li>
+								<li><a href="#ayah">Ayah</a></li>
+								<li><a href="#work">Surah</a></li>
 								<li><a href="#about">About</a></li>
 								<li><a href="#contact">Contact</a></li>
 								<!--<li><a href="#elements">Elements</a></li>-->
@@ -38,12 +38,40 @@
 				<!-- Main -->
 					<div id="main">
 
-						<!-- Intro -->
-							<article id="intro">
-								<h2 class="major">Intro</h2>
+						<!-- Ayah -->
+							<article id="ayah">
+								<h2 class="major">Ayah</h2>
 								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
-								<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. By the way, check out my <a href="#work">awesome work</a>.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
+								<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue...</p>
+								
+								<form id="ayahForm">
+									<label for="chapter">Select Chapter:</label>
+									<select id="chapter" name="chapter" required>
+										<option value="" disabled selected>Choose a chapter</option>
+										<!-- Add chapters dynamically using JavaScript -->
+									</select>
+									<br>
+									<label for="verse">Select Verse:</label>
+									<select id="verse" name="verse" required>
+										<option value="" disabled selected>Choose a verse</option>
+									</select>
+									<br>
+									<label for="edition">Select Edition (Optional):</label>
+									<select id="edition" name="edition">
+										<option value="" selected>Saheeh International</option>
+										<!-- Editions will be added dynamically -->
+									</select>
+									<br>
+									<button type="submit">Submit</button>
+								</form>
+
+								<div id="result" style="margin-top: 20px; display: none; position: relative;">
+									<h3>Result</h3>
+									<p id="verseText"></p>
+									<p id="reference" style="position: absolute; bottom: 40px; left: 0; font-size: 14px; color: gray;"></p>
+									<br>
+									<button id="copyButton" style="position: relative; margin-top: 10px;">Copy</button>
+								</div>
 							</article>
 
 						<!-- Work -->
@@ -352,6 +380,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/api.js"></script>
 
 	</body>
 </html>
