@@ -1,6 +1,6 @@
 const apiServer = "http://localhost:8080";
 
-// Chapter details with their names and verse counts
+// Chapter details with their names and verse counts : VERIFIED!
 const chapters = {
     1: { name: "Al-Fatihah", verses: 7 },
     2: { name: "Al-Baqarah", verses: 286 },
