@@ -30,8 +30,8 @@ const populateVerseDropdown = () => {
     chapterSelect.addEventListener("change", () => {
         const selectedChapter = chapterSelect.value;
 
-        // Clear existing options in the verse dropdown
-        verseDropdown.innerHTML = "";
+        // Clear existing options in the verse dropdown, but keep the placeholder
+        verseDropdown.innerHTML = `<option value="" disabled selected>Choose a verse</option>`;
 
         if (selectedChapter) {
             const verseCount = chapters[selectedChapter].verses;
@@ -48,6 +48,7 @@ const populateVerseDropdown = () => {
     // Trigger initial population if a default chapter is preselected
     chapterSelect.dispatchEvent(new Event("change"));
 };
+
 populateVerseDropdown();
 
 // Populate editions dropdown
