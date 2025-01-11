@@ -149,9 +149,32 @@ document.getElementById("surahForm").addEventListener("submit", async (event) =>
             versesContainer.innerHTML = ""; // Clear previous results
 
             result.data.forEach((verse) => {
-                const verseElement = document.createElement("p");
-                verseElement.textContent = `${verse.verse_text}\n${chapter}:${verse.verse_number}`;
-                versesContainer.appendChild(verseElement);
+                // Create a container for each ayah
+                const ayahContainer = document.createElement("div");
+                ayahContainer.style.position = "relative";
+                ayahContainer.style.marginBottom = "10px"; // Add some spacing between ayahs
+
+                // Create ayah text
+                const ayahText = document.createElement("p");
+                ayahText.id = "ayahText";
+                ayahText.textContent = verse.verse_text;
+
+                // Create ayah reference
+                const ayahReference = document.createElement("p");
+                ayahReference.id = "ayahReference";
+                ayahReference.style.position = "absolute";
+                ayahReference.style.bottom = "-50px";
+                ayahReference.style.left = "0";
+                ayahReference.style.fontSize = "14px";
+                ayahReference.style.color = "gray";
+                ayahReference.textContent = `${chapter}:${verse.verse_number}`;
+
+                // Append text and reference to the container
+                ayahContainer.appendChild(ayahText);
+                ayahContainer.appendChild(ayahReference);
+
+                // Append the container to the verses container
+                versesContainer.appendChild(ayahContainer);
             });
         } else {
             document.getElementById("surahVerses").textContent = "Error: " + result.message;

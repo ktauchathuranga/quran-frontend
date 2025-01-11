@@ -46,25 +46,26 @@
         <select id="ayahChapter" name="chapter" required>
             <option value="" disabled selected>Choose a chapter</option>
         </select>
-
+		<br>
         <label for="ayahVerse">Select Verse:</label>
         <select id="ayahVerse" name="verse" required>
             <option value="" disabled selected>Choose a verse</option>
         </select>
-
+		<br>
         <label for="ayahEdition">Select Edition (Optional):</label>
         <select id="ayahEdition" name="edition">
             <option value="" selected>Default (20)</option>
         </select>
-
+		<br>
         <button type="submit">Submit</button>
     </form>
 
     <div id="ayahResult" style="margin-top: 20px; display: none; position: relative;">
         <h3>Result</h3>
         <p id="ayahText"></p>
-        <p id="ayahReference" style="position: absolute; bottom: 0; left: 0; font-size: 14px; color: gray;"></p>
-        <button id="ayahCopyButton" style="margin-top: 10px;">Copy to Clipboard</button>
+        <p id="ayahReference" style="position: absolute; bottom: 55px; left: 0; font-size: 14px; color: gray;"></p>
+		<br>
+        <button id="ayahCopyButton" style="margin-top: 10px;">Copy</button>
     </div>
 </article>
 
@@ -77,12 +78,12 @@
         <select id="surahChapter" name="chapter" required>
             <option value="" disabled selected>Choose a chapter</option>
         </select>
-
+		<br>
         <label for="surahEdition">Select Edition (Optional):</label>
         <select id="surahEdition" name="edition">
             <option value="" selected>Default (20)</option>
         </select>
-
+		<br>
         <button type="submit">Submit</button>
     </form>
 
