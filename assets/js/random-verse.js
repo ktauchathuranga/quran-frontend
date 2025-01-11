@@ -7,7 +7,6 @@ const verses = [
     { chapter: 3, verse: 139 }, // Surah Ali-'Imran, verse 139
     { chapter: 14, verse: 7 },  // Surah Ibrahim, verse 7
     { chapter: 17, verse: 109 }, // Surah Al-Isra, verse 109
-    { chapter: 2, verse: 286 }, // Surah Al-Baqarah, verse 286 
     { chapter: 94, verse: 5 }, // Surah Ash-Sharh, verse 5
     {chapter: 94, verse: 6}, // Surah Ash-Sharh, verse 6
     {chapter: 2, verse: 152}, // Surah Al-Baqarah, verse 152
