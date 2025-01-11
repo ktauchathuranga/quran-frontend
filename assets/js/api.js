@@ -9,35 +9,49 @@ const chapters = {
     // Add more chapters as needed...
 };
 
-// Populate chapter dropdown
-const chapterSelect = document.getElementById("chapter");
-for (const chapterNumber in chapters) {
-    const option = document.createElement("option");
-    option.value = chapterNumber;
-    option.textContent = `${chapterNumber}. ${chapters[chapterNumber].name}`;
-    chapterSelect.appendChild(option);
-}
-
-// Adjust verses dropdown based on selected chapter
-const verseSelect = document.getElementById("verse");
-chapterSelect.addEventListener("change", () => {
-    const selectedChapter = chapterSelect.value;
-    const verseCount = chapters[selectedChapter].verses;
-
-    // Clear existing verses
-    verseSelect.innerHTML = '<option value="" disabled selected>Choose a verse</option>';
-
-    // Populate verses based on chapter selection
-    for (let i = 1; i <= verseCount; i++) {
+// Populate chapter dropdowns
+const populateChapterDropdown = (dropdownId) => {
+    const dropdown = document.getElementById(dropdownId);
+    for (const chapterNumber in chapters) {
         const option = document.createElement("option");
-        option.value = i;
-        option.textContent = `Verse ${i}`;
-        verseSelect.appendChild(option);
+        option.value = chapterNumber;
+        option.textContent = `${chapterNumber}. ${chapters[chapterNumber].name}`;
+        dropdown.appendChild(option);
     }
-});
+};
+populateChapterDropdown("ayahChapter");
+populateChapterDropdown("surahChapter");
+
+// Populate the "Ayah Verse" dropdown based on the selected chapter
+const populateVerseDropdown = () => {
+    const chapterSelect = document.getElementById("ayahChapter");
+    const verseDropdown = document.getElementById("ayahVerse");
+
+    chapterSelect.addEventListener("change", () => {
+        const selectedChapter = chapterSelect.value;
+
+        // Clear existing options in the verse dropdown
+        verseDropdown.innerHTML = "";
+
+        if (selectedChapter) {
+            const verseCount = chapters[selectedChapter].verses;
+
+            for (let i = 1; i <= verseCount; i++) {
+                const option = document.createElement("option");
+                option.value = i;
+                option.textContent = i;
+                verseDropdown.appendChild(option);
+            }
+        }
+    });
+
+    // Trigger initial population if a default chapter is preselected
+    chapterSelect.dispatchEvent(new Event("change"));
+};
+populateVerseDropdown();
 
 // Populate editions dropdown
-const editionSelect = document.getElementById("edition");
+const editionSelectIds = ["ayahEdition", "surahEdition"];
 const populateEditions = async () => {
     try {
         const payload = { action: "getEditionsList" };
@@ -49,12 +63,14 @@ const populateEditions = async () => {
         const result = await response.json();
 
         if (result.status === "success") {
-            // Add editions to the dropdown
-            result.data.forEach((edition) => {
-                const option = document.createElement("option");
-                option.value = edition.id;
-                option.textContent = edition.englishName;
-                editionSelect.appendChild(option);
+            editionSelectIds.forEach((selectId) => {
+                const dropdown = document.getElementById(selectId);
+                result.data.forEach((edition) => {
+                    const option = document.createElement("option");
+                    option.value = edition.id;
+                    option.textContent = edition.englishName;
+                    dropdown.appendChild(option);
+                });
             });
         } else {
             console.error("Failed to load editions:", result.message);
@@ -65,16 +81,13 @@ const populateEditions = async () => {
 };
 populateEditions();
 
-// Handle form submission
+// Handle Ayah form submission
 document.getElementById("ayahForm").addEventListener("submit", async (event) => {
     event.preventDefault();
+    const chapter = document.getElementById("ayahChapter").value;
+    const verse = document.getElementById("ayahVerse").value;
+    const edition = document.getElementById("ayahEdition").value || 20;
 
-    // Get form values
-    const chapter = chapterSelect.value;
-    const verse = verseSelect.value;
-    const edition = editionSelect.value || 20; // Default edition is 20 if not selected
-
-    // Prepare request payload
     const payload = {
         action: "getVerseDetails",
         chapter: parseInt(chapter),
@@ -83,7 +96,6 @@ document.getElementById("ayahForm").addEventListener("submit", async (event) => 
     };
 
     try {
-        // Fetch data from API
         const response = await fetch(apiServer, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -91,35 +103,61 @@ document.getElementById("ayahForm").addEventListener("submit", async (event) => 
         });
 
         const result = await response.json();
-
-        // Show result or error
-        const resultDiv = document.getElementById("result");
-        const referenceText = document.getElementById("reference");
         if (result.status === "success") {
             const verseText = result.data.verse_text;
             const reference = `${chapter}:${verse}`;
+            document.getElementById("ayahText").textContent = verseText;
+            document.getElementById("ayahReference").textContent = reference;
 
-            // Set verse and reference
-            document.getElementById("verseText").textContent = verseText;
-            referenceText.textContent = reference;
-
-            // Handle copy button functionality
-            document.getElementById("copyButton").addEventListener("click", () => {
+            document.getElementById("ayahCopyButton").onclick = () => {
                 const textToCopy = `${verseText} (${reference})`;
                 navigator.clipboard.writeText(textToCopy).then(() => {
                     alert("Copied to clipboard!");
-                }).catch((err) => {
-                    console.error("Failed to copy:", err);
                 });
-            });
+            };
         } else {
-            document.getElementById("verseText").textContent = result.message || "Error retrieving verse.";
-            referenceText.textContent = "";
+            document.getElementById("ayahText").textContent = "Error: " + result.message;
         }
-        resultDiv.style.display = "block";
+        document.getElementById("ayahResult").style.display = "block";
     } catch (error) {
         console.error("Error fetching API:", error);
-        document.getElementById("verseText").textContent = "An error occurred. Please try again.";
-        document.getElementById("result").style.display = "block";
+    }
+});
+
+// Handle Surah form submission
+document.getElementById("surahForm").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const chapter = document.getElementById("surahChapter").value;
+    const edition = document.getElementById("surahEdition").value || 20;
+
+    const payload = {
+        action: "getChapterDetails",
+        chapter: parseInt(chapter),
+        edition_id: parseInt(edition),
+    };
+
+    try {
+        const response = await fetch(apiServer, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+        });
+
+        const result = await response.json();
+        if (result.status === "success") {
+            const versesContainer = document.getElementById("surahVerses");
+            versesContainer.innerHTML = ""; // Clear previous results
+
+            result.data.forEach((verse) => {
+                const verseElement = document.createElement("p");
+                verseElement.textContent = `${verse.verse_text}\n${chapter}:${verse.verse_number}`;
+                versesContainer.appendChild(verseElement);
+            });
+        } else {
+            document.getElementById("surahVerses").textContent = "Error: " + result.message;
+        }
+        document.getElementById("surahResult").style.display = "block";
+    } catch (error) {
+        console.error("Error fetching API:", error);
     }
 });
