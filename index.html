@@ -33,9 +33,9 @@
 							<ul>
 								<li><a href="#ayah">Ayah</a></li>
 								<li><a href="#surah">Surah</a></li>
+								<li><a href="#mood">Mood</a></li>
 								<li><a href="#about">About</a></li>
-								<li><a href="#contact">Contact</a></li>
-								<!--<li><a href="#elements">Elements</a></li>-->
+								<!-- <li><a href="#elements">Elements</a></li> -->
 							</ul>
 						</nav>
 					</header>
@@ -98,12 +98,26 @@
 								</div>
 							</article>
 
-						<!-- About -->
-							<article id="about">
-								<h2 class="major">About</h2>
-								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
-								<p>Lorem ipsum dolor sit amet, consectetur et adipiscing elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices. Aliquam libero et malesuada fames ac ante ipsum primis in faucibus. Cras viverra ligula sit amet ex mollis mattis lorem ipsum dolor sit amet.</p>
-							</article>
+						<!-- Mood -->
+						<article id="mood">
+							<h2 class="major">Mood</h2>
+							<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
+							<h3>How are you feeling today?</h3>							
+							<!-- Buttons for each feeling -->
+							<button onclick="getVerse('happy')">Happy</button>
+							<button onclick="getVerse('grateful')">Grateful</button>
+							<button onclick="getVerse('anger')">Anger</button>
+							<button onclick="getVerse('sadness')">Sadness</button>
+							<button onclick="getVerse('loneliness')">Loneliness</button>
+							<button onclick="getVerse('anxiousness')">Anxiousness</button>
+						
+							<!-- Result section -->
+							<div id="ayahResultMood" style="margin-top: 20px; display: none;">
+								<!-- <h3>Result</h3>
+								<div id="surahVerses"></div> -->
+							</div>
+						</article>
+						
 
 						<!-- Contact -->
 							<article id="contact">
@@ -398,6 +412,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/main.js"></script>
 			<script src="assets/js/api.js"></script>
 			<script src="assets/js/random-verse.js"></script>
+			<script src="assets/js/mood.js"></script>
 
 	</body>
 </html>
