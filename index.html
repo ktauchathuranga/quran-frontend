@@ -104,13 +104,16 @@
 							<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
 							<h3>How are you feeling today?</h3>							
 							<!-- Buttons for each feeling -->
-							<button onclick="getVerse('happy')">Happy</button>
-							<button onclick="getVerse('grateful')">Grateful</button>
-							<button onclick="getVerse('anger')">Anger</button>
-							<button onclick="getVerse('sadness')">Sadness</button>
-							<button onclick="getVerse('loneliness')">Loneliness</button>
-							<button onclick="getVerse('anxiousness')">Anxiousness</button>
-						
+							<section>
+								<ul class="actionsMood">
+									<li><button onclick="getVerse('happy')" class="button">Happy</button></li>
+									<li><button onclick="getVerse('grateful')" class="button">Grateful</button></li>
+									<li><button onclick="getVerse('anger')" class="button">Anger</button></li>
+									<li><button onclick="getVerse('sadness')" class="button">Sadness</button></li>
+									<li><button onclick="getVerse('loneliness')" class="button">Loneliness</button></li>
+									<li><button onclick="getVerse('anxiousness')" class="button">Anxiousness</button></li>
+								</ul>
+							</section>							
 							<!-- Result section -->
 							<div id="ayahContainerMood" style="margin-top: 20px; display: none;">
 								<h3>Result</h3>

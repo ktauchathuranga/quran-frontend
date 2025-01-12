@@ -1664,3 +1664,21 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+
+.actionsMood {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
+	grid-gap: 20px; /* Adds even spacing between buttons */
+	list-style: none;
+	padding: 0;
+}
+
+.actionsMood li {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.actionsMood .button {
+	width: 100%; /* Ensures each button takes full width of the grid cell */
+}
