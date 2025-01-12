@@ -1,4 +1,4 @@
-const apiServer = "http://ip172-18-0-66-cu20ug2im2rg00a2qfog-8080.direct.labs.play-with-docker.com/";
+const apiServer = "http://ip172-18-0-66-cu20ug2im2rg00a2qfog-8080.direct.labs.play-with-docker.com";
 
 // Chapter details with their names and verse counts : VERIFIED!
 const chapters = {
