@@ -1,0 +1,9 @@
+services:
+  quran-frontend:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/usr/share/nginx/html
+    restart: always
+    container_name: quran-frontend
