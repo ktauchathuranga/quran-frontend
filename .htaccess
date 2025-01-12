@@ -1,0 +1,21 @@
+# Enable URL rewriting
+RewriteEngine On
+
+# Redirect www to non-www (optional, if you want to enforce this)
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^ http://%1%{REQUEST_URI} [L,R=301]
+
+# Set default page to index.html (if not already set)
+DirectoryIndex index.html
+
+# Prevent directory listing
+Options -Indexes
+
+# Enable compression (optional, for better performance)
+AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/x-javascript application/javascript application/json
+
+# Cache static files (optional, for better performance)
+<FilesMatch "\.(jpg|jpeg|png|gif|bmp|css|js|ico|woff|woff2|ttf|svg)$">
+    ExpiresActive On
+    ExpiresDefault "access plus 1 year"
+</FilesMatch>
