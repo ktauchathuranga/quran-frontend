@@ -1,4 +1,4 @@
-const apiServer = "https://417c-175-157-141-247.ngrok-free.app";
+const apiServer = "https://badly-evident-chamois.ngrok-free.app";
 
 // Chapter details with their names and verse counts : VERIFIED!
 const chapters = {
