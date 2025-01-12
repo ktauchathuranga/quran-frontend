@@ -112,8 +112,11 @@ function fetchVerseData(chapter, verse) {
 // Function to display multiple verses
 function displayVerses(verses) {
     const versesContainer = document.getElementById('ayahResultMood');
-    versesContainer.style.display = 'block';
+    versesContainer.style.display = 'block';  // Make the container visible
     versesContainer.innerHTML = ''; // Clear previous results
+
+    const ayahContainerMood = document.getElementById('ayahContainerMood'); 
+    ayahContainerMood.style.display = 'block'; // Ensure the container is visible
 
     verses.forEach(verse => {
         const ayahContainer = document.createElement('div');
@@ -125,7 +128,7 @@ function displayVerses(verses) {
 
         const ayahReference = document.createElement('p');
         ayahReference.style.position = 'absolute';
-        ayahReference.style.bottom = '55px';
+        ayahReference.style.bottom = '-55px';
         ayahReference.style.left = '0';
         ayahReference.style.fontSize = '14px';
         ayahReference.style.color = 'gray';
