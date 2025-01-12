@@ -1,4 +1,4 @@
-const apiServer = "http://192.168.254.155:8080";
+const apiServer = "https://417c-175-157-141-247.ngrok-free.app";
 
 // Chapter details with their names and verse counts : VERIFIED!
 const chapters = {
