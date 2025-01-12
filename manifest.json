@@ -1,6 +1,7 @@
 {
     "name": "Al Quran",
     "short_name": "Al Quran",
+    "description": "Explore the Al Quran website for accessing specific verses and chapters. Discover personalized verses based on mood and dive into the beauty of the Quran.",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
@@ -14,6 +15,16 @@
       {
         "src": "/images/pwa/512.png",
         "sizes": "512x512",
+        "type": "image/png"
+      },
+      {
+        "src": "/images/pwa/96.png",
+        "sizes": "96x96",
+        "type": "image/png"
+      },
+      {
+        "src": "/images/pwa/144.png",
+        "sizes": "144x144",
         "type": "image/png"
       }
     ]
