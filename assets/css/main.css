@@ -1682,3 +1682,16 @@ input, select, textarea {
 .actionsMood .button {
 	width: 100%; /* Ensures each button takes full width of the grid cell */
 }
+
+@media (max-width: 768px) {
+    .actionsMood {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+    }
+}
+
+/* Media query for mobile screens */
+@media (max-width: 480px) {
+    .actionsMood {
+        grid-template-columns: 1fr; /* 1 column for mobile screens */
+    }
+}
