@@ -4,6 +4,7 @@
 		<title>Al Quran</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="manifest" href="/manifest.json">
 		<meta name="description" content="Explore the Al Quran website for accessing specific verses and chapters. Discover personalized verses based on mood and dive into the beauty of the Quran.">
 		<meta name="keywords" content="Al Quran, Quran, Quran verses, Quran chapters, Quran surahs, Quran mood, Quran mood verses">
 		<meta name="author" content="Ashen Chathuranga">
@@ -438,6 +439,20 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 							console.error('Error fetching version:', error);
 							document.getElementById('version').textContent = "Unknown";
 						});
+				</script>
+				<script>
+				// Service Worker registration code
+				if ('serviceWorker' in navigator) {
+					window.addEventListener('load', () => {
+					navigator.serviceWorker.register('/service-worker.js')
+						.then(() => {
+						console.log('Service Worker registered successfully');
+						})
+						.catch((error) => {
+						console.log('Service Worker registration failed:', error);
+						});
+					});
+				}
 				</script>
 				
 				
