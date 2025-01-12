@@ -1695,3 +1695,8 @@ input, select, textarea {
         grid-template-columns: 1fr; /* 1 column for mobile screens */
     }
 }
+
+.version {
+    font-size: 0.85em;
+    color: #888; /* Use a subtle gray */
+}

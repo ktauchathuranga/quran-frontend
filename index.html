@@ -402,9 +402,20 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					</div>
 
 				<!-- Footer -->
-					<footer id="footer">
-						<p class="copyright">&copy; 2025 Ashen Chathuranga. All Rights Reserved.</p>
-					</footer>
+				<footer id="footer">
+					<p class="copyright">
+						&copy; 2025 Ashen Chathuranga. All Rights Reserved. <span class="version">| Version <span id="version"></span></span>
+					</p>
+				</footer>
+				<script>
+					fetch('version.json')
+						.then(response => response.json())
+						.then(data => {
+							document.getElementById('version').textContent = data.version;
+						})
+						.catch(error => console.error('Error fetching version:', error));
+				</script>
+				
 
 			</div>
 
