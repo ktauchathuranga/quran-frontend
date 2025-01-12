@@ -1715,3 +1715,44 @@ input, select, textarea {
 #footer .version a:focus {
 	outline: none; /* Remove focus outline */
 }
+
+/* Style for the install notification */
+#install-notification {
+	background-color: rgba(136, 136, 136, 0.8); /* 80% opacity for a transparent effect */
+	color: white;
+	padding: 15px 20px;
+	position: fixed;
+	top: -500px; /* Initially off-screen */
+	left: 50%;
+	transform: translateX(-50%); /* Center horizontally */
+	border-radius: 30px; /* Rounded corners */
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4), 0 0 25px rgba(136, 136, 136, 0.6); /* Glow effect */
+	display: flex;
+	flex-direction: row; /* Align items horizontally */
+	align-items: center; /* Align vertically in the center */
+	justify-content: space-between; /* Space between the text and button */
+	max-width: 400px;
+	width: 90%;
+	font-size: 16px;
+	transition: top 1s ease-in-out; /* Smooth transition */
+	z-index: 1000;
+  }
+  
+  #install-notification ul {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	justify-content: space-between; /* Ensure that the content is spread out */
+  }
+  
+  #install-notification h5 {
+	margin: 0;
+	font-weight: normal;
+  }
+  
+  /* Optional: Button styling for a futuristic look */
+  #install-btn {
+	opacity: 0.6;
+  }
