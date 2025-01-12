@@ -1700,3 +1700,18 @@ input, select, textarea {
     font-size: 0.85em;
     color: #888; /* Use a subtle gray */
 }
+
+#footer .version a {
+	/* color: #aaa; Subtle text color for the link */
+	outline: none; /* Remove focus outline */
+	border: none; /* Remove any border that might appear */
+}
+
+#footer .version a:hover {
+	color: #fff; /* Change color on hover for better visibility */
+	text-decoration: underline; /* Add underline only on hover */
+}
+
+#footer .version a:focus {
+	outline: none; /* Remove focus outline */
+}

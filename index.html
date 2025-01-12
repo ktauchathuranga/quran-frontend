@@ -404,17 +404,29 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				<!-- Footer -->
 				<footer id="footer">
 					<p class="copyright">
-						&copy; 2025 Ashen Chathuranga. All Rights Reserved. <span class="version">| Version <span id="version"></span></span>
+						&copy; 2025 Ashen Chathuranga. All Rights Reserved. 
+						<span class="version">
+							| Version <a id="version-link" href="#" target="_blank"><span id="version"></span></a>
+						</span>
 					</p>
 				</footer>
+				
 				<script>
 					fetch('version.json')
 						.then(response => response.json())
 						.then(data => {
-							document.getElementById('version').textContent = data.version;
+							const versionElement = document.getElementById('version');
+							const versionLink = document.getElementById('version-link');
+							
+							versionElement.textContent = data.version;
+							versionLink.href = `https://github.com/ktauchathuranga/quran-frontend/releases/tag/v${data.version}`;
 						})
-						.catch(error => console.error('Error fetching version:', error));
+						.catch(error => {
+							console.error('Error fetching version:', error);
+							document.getElementById('version').textContent = "Unknown";
+						});
 				</script>
+				
 				
 
 			</div>
