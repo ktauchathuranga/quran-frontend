@@ -1,4 +1,7 @@
-const apiServer = "https://badly-evident-chamois.ngrok-free.app";
+const apiServer = "http://localhost:8080";
+
+// ngrok static URL: https://badly-evident-chamois.ngrok-free.app
+// ngrok command: ngrok http --url badly-evident-chamois.ngrok-free.app 8080
 
 // Chapter details with their names and verse counts : VERIFIED!
 const chapters = {
