@@ -1781,14 +1781,14 @@ outline: none; /* Remove focus outline */
 
 
 #bg {
-	position: absolute;
+	/* position: absolute; */
 	width: 100%;
 	height: 100vh; /* Full viewport height */
 	overflow: hidden; /* Prevent scrolling */
   }
   
   #bg video {
-	position: absolute;
+	position: relative;
 	top: 50%;
 	left: 50%;
 	width: 100%;
@@ -1815,9 +1815,9 @@ outline: none; /* Remove focus outline */
 	pointer-events: none; /* Allow interaction with the video */
   }
   
-  /* #bg video:not(:playing) + :after {
+  #bg video:not(:playing) + :after {
 	display: block;
   }
-   */
+  
 
 /* if its working dont touch moment lol*/
