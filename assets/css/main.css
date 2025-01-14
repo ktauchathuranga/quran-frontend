@@ -1757,21 +1757,21 @@ input, select, textarea {
 	opacity: 0.6;
   }
 
-.sponsor {
+#lastword .sponsor {
 color: #888; /* Use a subtle gray */
 }
 
-#lastword .sponsor a {
+#lastword a {
 /* color: #aaa; Subtle text color for the link */
 outline: none; /* Remove focus outline */
 border: none; /* Remove any border that might appear */
 }
 
-#lastword .sponsor a:hover {
+#lastword a:hover {
 color: #fff; /* Change color on hover for better visibility */
 text-decoration: underline; /* Add underline only on hover */
 }
 
-#lastword .sponsor a:focus {
+#lastword a:focus {
 outline: none; /* Remove focus outline */
 }
