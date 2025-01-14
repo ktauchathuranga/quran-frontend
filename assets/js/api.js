@@ -1,5 +1,6 @@
-const apiServer = "http://192.168.254.155:8080";
+const apiServer = "https://badly-evident-chamois.ngrok-free.app";
 
+// local testing URL: http://192.168.254.155:8080
 // ngrok static URL: https://badly-evident-chamois.ngrok-free.app
 // ngrok command: ngrok http --url badly-evident-chamois.ngrok-free.app 8080
 
