@@ -225,7 +225,7 @@ document.getElementById("ayahForm").addEventListener("submit", async (event) => 
             document.getElementById("ayahCopyButton").onclick = () => {
                 const textToCopy = `${verseText} (${reference})`;
                 navigator.clipboard.writeText(textToCopy).then(() => {
-                    alert("Copied to clipboard!");
+                    // alert("Copied to clipboard!");
                 });
             };
         } else {
