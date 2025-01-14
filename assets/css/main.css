@@ -1775,3 +1775,49 @@ text-decoration: underline; /* Add underline only on hover */
 #lastword a:focus {
 outline: none; /* Remove focus outline */
 }
+
+
+/* ---------------------------------------------------- */
+
+
+#bg {
+	position: absolute;
+	width: 100%;
+	height: 100vh; /* Full viewport height */
+	overflow: hidden; /* Prevent scrolling */
+  }
+  
+  #bg video {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	height: 100%;
+	transform: translate(-50%, -50%);
+	object-fit: cover;
+	z-index: 0;
+	filter: brightness(1) contrast(1.2); /* Adjust brightness and contrast */
+  }
+  
+  #bg:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url("../../images/bg.jpg");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	opacity: 0.5; /* Make the fallback image semi-transparent */
+	z-index: 1;
+	pointer-events: none; /* Allow interaction with the video */
+  }
+  
+  /* #bg video:not(:playing) + :after {
+	display: block;
+  }
+   */
+
+/* if its working dont touch moment lol*/
