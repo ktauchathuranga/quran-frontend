@@ -3,7 +3,7 @@
     "short_name": "Al Quran",
     "description": "Explore the Al Quran website for accessing specific verses and chapters. Discover personalized verses based on mood and dive into the beauty of the Quran.",
     "start_url": "/",
-    "display": "fullScreen",
+    "display": "fullscreen",
     "background_color": "#ffffff",
     "theme_color": "#000000",
     "author": "Ashen Chathuranga",
