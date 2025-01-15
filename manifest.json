@@ -6,6 +6,51 @@
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#000000",
+    "author": "Ashen Chathuranga",
+
+    "shortcuts": [
+  {
+    "name": "Open Ayah",
+    "short_name": "Ayah",
+    "description": "Search for specific Quranic verses",
+    "url": "/#ayah",
+    "icons": [
+      {
+        "src": "/images/pwa/shortcut-chapters.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ]
+  },
+  {
+    "name": "Search by Mood",
+    "short_name": "Mood",
+    "description": "Find verses for your mood",
+    "url": "/#mood",
+    "icons": [
+      {
+        "src": "/images/pwa/shortcut-mood.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ]
+  },
+  {
+    "name": "Open Surah",
+    "short_name": "Surah",
+    "description": "Access all Quranic Surahs",
+    "url": "/#surah",
+    "icons": [
+      {
+        "src": "/images/pwa/shortcut-surah.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ]
+  }
+]
+  ,
+
     "icons": [
       {
         "src": "/images/pwa/192.png",
