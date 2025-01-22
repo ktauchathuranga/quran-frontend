@@ -71,9 +71,24 @@ const getRandomVerse = async () => {
     return null;
 };
 
+// Function to handle retry logic
+const fetchVerseWithRetry = async () => {
+    let verseData = null;
+    
+    while (!verseData) {
+        verseData = await getRandomVerse(); // Try fetching the verse
+        if (!verseData) {
+            console.log("Retrying in 1 second...");
+            await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second before retrying
+        }
+    }
+
+    return verseData;
+};
+
 // Update content once the verse is fetched
 const updateContent = async () => {
-    const verseData = await getRandomVerse();
+    const verseData = await fetchVerseWithRetry(); // This will retry until it succeeds
     if (verseData) {
         const verseTextElement = document.querySelector("#verse-text");
         verseTextElement.innerHTML = verseData.text;
