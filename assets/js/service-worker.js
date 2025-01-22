@@ -10,6 +10,7 @@ const ASSETS_TO_CACHE = [
   '/assets/css/fontawesome-all.min.css',
   '/assets/css/main.css',
   '/assets/css/noscript.css',
+  '/images/loading/loading.css',
   // JS
   '/assets/js/api.js',
   '/assets/js/breakpoints.min.js',
