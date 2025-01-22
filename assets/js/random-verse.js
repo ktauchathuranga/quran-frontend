@@ -1,4 +1,4 @@
-// const apiServer = "http://localhost:8080";
+var wrapper = document.querySelector('.wrapper svg');
 
 // List of verses to fetch
 const verses = [
@@ -13,17 +13,32 @@ const verses = [
     {chapter: 9, verse: 51}, // Surah At-Tawbah, verse 51
 ];
 
+// Initialize the interval variable to keep track of the loop
+let drawEraseInterval;
+
+// Function to start the loop
+function startDrawingLoop() {
+  // Toggle the 'active' class on and off every 2 seconds
+  drawEraseInterval = setInterval(() => {
+    wrapper.classList.toggle('active');
+  }, 2000); // 2000ms (2 seconds) for each cycle (drawing and erasing)
+}
+
+// Function to stop the loop and ensure we are in the 'draw' state
+function stopDrawingLoop() {
+  clearInterval(drawEraseInterval);  // Stop the loop
+  wrapper.classList.add('active');   // Ensure we end in the 'draw' state
+}
+
 // Fetch a random verse
 const getRandomVerse = async () => {
     const randomIndex = Math.floor(Math.random() * verses.length); // Get random index
 
-    // Debug: log the random index to ensure randomness
     console.log("Random Index Selected:", randomIndex);
 
     const { chapter, verse } = verses[randomIndex];
 
     try {
-        // Remove the Cache-Control header for simplicity (to avoid CORS issue)
         const response = await fetch(`${apiServer}/`, {
             method: "POST",
             headers: { 
@@ -39,7 +54,6 @@ const getRandomVerse = async () => {
 
         const result = await response.json();
 
-        // Debug: log the result to ensure different verses are being fetched
         console.log("Fetched Verse:", result);
 
         if (result.status === "success") {
@@ -57,21 +71,27 @@ const getRandomVerse = async () => {
     return null;
 };
 
-// Update the paragraph with a random verse
+// Update content once the verse is fetched
 const updateContent = async () => {
     const verseData = await getRandomVerse();
     if (verseData) {
-        // Update the 'verse-text' element
         const verseTextElement = document.querySelector("#verse-text");
         verseTextElement.innerHTML = verseData.text;
 
-        // Update the 'verse-details' element
         const verseDetailsElement = document.querySelector("#verse-details");
         verseDetailsElement.innerHTML = `${verseData.chapterName}: ${verseData.verseNumber}`;
+
+        // Stop the drawing loop and ensure it ends in the 'draw' state
+        stopDrawingLoop();
     } else {
         console.error("No verse data available.");
     }
 };
 
-// Call the function to update content when the page loads
-document.addEventListener("DOMContentLoaded", updateContent);
+// Start the drawing loop when the page loads
+document.addEventListener("DOMContentLoaded", () => {
+    startDrawingLoop();  // Start the drawing loop
+
+    // Fetch and update content once the API call is made
+    updateContent(); // This can be modified if you want to trigger at a specific time/event
+});
