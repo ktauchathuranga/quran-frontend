@@ -1,4 +1,4 @@
-var wrapper = document.querySelector('.wrapper svg');
+var logo = document.querySelector('.logo svg');
 
 // List of verses to fetch
 const verses = [
@@ -20,14 +20,14 @@ let drawEraseInterval;
 function startDrawingLoop() {
   // Toggle the 'active' class on and off every 2 seconds
   drawEraseInterval = setInterval(() => {
-    wrapper.classList.toggle('active');
+    logo.classList.toggle('active');
   }, 2000); // 2000ms (2 seconds) for each cycle (drawing and erasing)
 }
 
 // Function to stop the loop and ensure we are in the 'draw' state
 function stopDrawingLoop() {
   clearInterval(drawEraseInterval);  // Stop the loop
-  wrapper.classList.add('active');   // Ensure we end in the 'draw' state
+  logo.classList.add('active');   // Ensure we end in the 'draw' state
 }
 
 // Fetch a random verse
