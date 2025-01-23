@@ -1,4 +1,4 @@
-const apiServer = "http://192.168.254.155:8080";
+const apiServer = "https://quran.x10.mx";
 
 // local testing URL: http://192.168.254.155:8080
 // ngrok static URL: https://badly-evident-chamois.ngrok-free.app
