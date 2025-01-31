@@ -233,10 +233,12 @@ document.getElementById("ayahForm").addEventListener("submit", async (event) => 
             document.getElementById("ayahText").textContent = "Error: " + result.message;
         }
         document.getElementById("ayahResult").style.display = "block";
+        document.getElementById("ayahResult").scrollIntoView({ behavior: "smooth" }); // Scroll to result
     } catch (error) {
         console.error("Error fetching API:", error);
     }
 });
+
 
 // Handle Surah form submission
 document.getElementById("surahForm").addEventListener("submit", async (event) => {
@@ -294,6 +296,7 @@ document.getElementById("surahForm").addEventListener("submit", async (event) =>
             document.getElementById("surahVerses").textContent = "Error: " + result.message;
         }
         document.getElementById("surahResult").style.display = "block";
+        document.getElementById("surahResult").scrollIntoView({ behavior: "smooth" }); // Scroll to result
     } catch (error) {
         console.error("Error fetching API:", error);
     }

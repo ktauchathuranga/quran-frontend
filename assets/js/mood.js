@@ -138,4 +138,6 @@ function displayVerses(verses) {
         ayahContainer.appendChild(ayahReference);
         versesContainer.appendChild(ayahContainer);
     });
+
+    versesContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
