@@ -164,6 +164,51 @@ const populateVerseDropdown = () => {
 
 populateVerseDropdown();
 
+// Mapping of language codes to human-readable language names
+const languageMap = {
+    ar: "Arabic",
+    az: "Azerbaijani",
+    bn: "Bengali",
+    cs: "Czech",
+    de: "German",
+    dv: "Dhivehi",
+    fa: "Persian",
+    fr: "French",
+    ha: "Hausa",
+    hi: "Hindi",
+    id: "Indonesian",
+    it: "Italian",
+    ja: "Japanese",
+    ko: "Korean",
+    ku: "Kurdish",
+    ml: "Malayalam",
+    nl: "Dutch",
+    no: "Norwegian",
+    pl: "Polish",
+    pt: "Portuguese",
+    ro: "Romanian",
+    ru: "Russian",
+    sd: "Sindhi",
+    so: "Somali",
+    sq: "Albanian",
+    sv: "Swedish",
+    sw: "Swahili",
+    ta: "Tamil",
+    tg: "Tajik",
+    th: "Thai",
+    tr: "Turkish",
+    tt: "Tatar",
+    ug: "Uyghur",
+    ur: "Urdu",
+    uz: "Uzbek",
+    en: "English",
+    es: "Spanish",
+    zh: "Chinese",
+    bs: "Bosnian",
+    ms: "Malay",
+    si: "Sinhalese",
+};
+
 // Populate editions dropdown
 const editionSelectIds = ["ayahEdition", "surahEdition"];
 const populateEditions = async () => {
@@ -182,7 +227,12 @@ const populateEditions = async () => {
                 result.data.forEach((edition) => {
                     const option = document.createElement("option");
                     option.value = edition.id;
-                    option.textContent = edition.englishName;
+
+                    // Get the language name from the map or default to 'Unknown'
+                    const language = languageMap[edition.language] || "Unknown Language";
+
+                    // Format the option text to include language and edition name
+                    option.textContent = `${language} - ${edition.englishName}`;
                     dropdown.appendChild(option);
                 });
             });
@@ -193,6 +243,7 @@ const populateEditions = async () => {
         console.error("Error fetching editions:", error);
     }
 };
+
 populateEditions();
 
 // Handle Ayah form submission
