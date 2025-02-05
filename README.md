@@ -1,9 +1,10 @@
 # Al Quran Website
 
-**بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ**  
-*In the Name of Allah, the Most Gracious, the Most Merciful*
+>**بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ**  
+>*In the Name of Allah, the Most Gracious, the Most Merciful*
 
-**Visit the Al Quran Website**: [https://alquranwebsite.com](https://alquranwebsite.com)
+> [!TIP]
+> - **Visit the Al Quran Website**: [https://alquranwebsite.com](https://alquranwebsite.com)
 
 A modern web interface for exploring the Al Quran, designed to help believers connect deeply with the divine words of Allah (SWT) and seek His eternal guidance. This project is a humble effort to make the Quran more accessible to people worldwide, *InshaAllah*.
 
