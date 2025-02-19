@@ -16,7 +16,7 @@
     "url": "/#ayah",
     "icons": [
       {
-        "src": "/images/pwa/shortcuts/ayah.jpg",
+        "src": "/images/pwa/shortcuts/ayah.png",
         "sizes": "192x192",
         "type": "image/png"
       }
