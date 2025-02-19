@@ -16,7 +16,7 @@
     "url": "/#ayah",
     "icons": [
       {
-        "src": "/images/pwa/shortcut-chapters.png",
+        "src": "/images/pwa/shortcuts/ayah.jpg",
         "sizes": "192x192",
         "type": "image/png"
       }
@@ -29,7 +29,7 @@
     "url": "/#mood",
     "icons": [
       {
-        "src": "/images/pwa/shortcut-mood.png",
+        "src": "/images/pwa/shortcuts/mood.png",
         "sizes": "192x192",
         "type": "image/png"
       }
@@ -42,7 +42,7 @@
     "url": "/#surah",
     "icons": [
       {
-        "src": "/images/pwa/shortcut-surah.png",
+        "src": "/images/pwa/shortcuts/surah.png",
         "sizes": "192x192",
         "type": "image/png"
       }
