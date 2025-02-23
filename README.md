@@ -1,12 +1,4 @@
-![Al Quran Preview](images/opengraph.jpg)
-
-<style>
-   img {
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border: 2px solid #D8BFD8;
-   }
-</style>
+<img src="images/opengraph.jpg" alt="Al Quran Preview" style="border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border: 2px solid #D8BFD8;">
 
 # Al Quran Website
 
