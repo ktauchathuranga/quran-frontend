@@ -1,4 +1,4 @@
-const CACHE_NAME = 'website-cache-v1';
+const CACHE_NAME = 'website-cache-v2';
 const ASSETS_TO_CACHE = [
   '/', '/index.html', '/manifest.json', '/robot.txt', '/sitemap.xml', '/version.json',
   // CSS
