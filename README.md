@@ -4,7 +4,7 @@
 >*In the Name of Allah, the Most Gracious, the Most Merciful*
 
 > [!TIP]
-> - **Visit the Al Quran Website**: [HERE!](https://quran-frontend-sable.vercel.app/)
+> - **Visit the Al Quran Website**: [HERE!](https://readthequran.vercel.app/)
 
 A modern web interface for exploring the Al Quran, designed to help believers connect deeply with the divine words of Allah (SWT) and seek His eternal guidance. This project is a humble effort to make the Quran more accessible to people worldwide, *InshaAllah*.
 
