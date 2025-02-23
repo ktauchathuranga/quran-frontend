@@ -1,4 +1,4 @@
-<img src="images/opengraph.jpg" alt="Al Quran Preview" width="400" style="border-radius: 15px; border: 2px solid #D8BFD8;">
+![Al Quran Preview](images/github.jpg)
 
 # Al Quran Website
 
