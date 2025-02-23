@@ -1,4 +1,4 @@
-![Al Quran Preview](images/github.jpg)
+![Al Quran Preview](images/github.png)
 
 # Al Quran Website
 
