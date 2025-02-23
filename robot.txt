@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /assets/
 Disallow: /images/
 
-Sitemap: https://quran-frontend-sable.vercel.app/sitemap.xml
+Sitemap: https://readthequran.vercel.app/sitemap.xml
