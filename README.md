@@ -12,7 +12,7 @@
 A modern web interface for exploring the Al Quran, designed to help believers connect deeply with the divine words of Allah (SWT) and seek His eternal guidance. This project is a humble effort to make the Quran more accessible to people worldwide, *InshaAllah*.
 
 ---
-**May Allah (SWT) bless every soul and shower His mercy upon us. May our hearts be illuminated by the Quran, guiding us through trials. Grant us strength in faith and fulfill our righteous desires. Let this project inspire others towards righteousness and bring us closer to Allah (SWT). May His guidance lead us to success in this world and the Hereafter. Ameen.**
+_May Allah (SWT) bless every soul and shower His mercy upon us. May our hearts be illuminated by the Quran, guiding us through trials. Grant us strength in faith and fulfill our righteous desires. Let this project inspire others towards righteousness and bring us closer to Allah (SWT). May His guidance lead us to success in this world and the Hereafter. Ameen._
 ---
 
 ## Features
