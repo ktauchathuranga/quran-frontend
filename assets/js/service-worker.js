@@ -24,7 +24,7 @@ const ASSETS_TO_CACHE = [
   '/assets/js/util.js',
 
   // Videos
-  '/assets/videos/bg.mp4',
+  '/assets/videos/bg1.mp4',
 ];
 
 // Install Event
@@ -32,7 +32,16 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       console.log('Caching specified assets...');
-      return cache.addAll(ASSETS_TO_CACHE);
+      return Promise.all(
+        ASSETS_TO_CACHE.map((url) => {
+          return fetch(url).then((response) => {
+            if (response.ok) {
+              return cache.put(url, response);
+            }
+            throw new Error(`Failed to fetch ${url}`);
+          });
+        })
+      );
     })
   );
   self.skipWaiting();
