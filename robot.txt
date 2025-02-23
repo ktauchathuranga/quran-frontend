@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /assets/
 Disallow: /images/
 
-Sitemap: http://localhost:8080/sitemap.xml
+Sitemap: https://quran-frontend-sable.vercel.app/sitemap.xml
