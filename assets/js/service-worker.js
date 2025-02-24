@@ -1,11 +1,6 @@
-const CACHE_NAME = 'website-cache-v1';
+const CACHE_NAME = 'website-cache-v2';
 const ASSETS_TO_CACHE = [
-  '/', // Root
-  '/index.html',
-  '/manifest.json',
-  '/robot.txt',
-  '/sitemap.xml',
-  '/version.json',
+  '/', '/index.html', '/manifest.json', '/robots.txt', '/sitemap.xml', '/version.json',
   // CSS
   '/assets/css/fontawesome-all.min.css',
   '/assets/css/main.css',
@@ -22,34 +17,22 @@ const ASSETS_TO_CACHE = [
   '/assets/js/random-verse.js',
   '/assets/js/service-worker.js',
   '/assets/js/util.js',
-
   // Videos
   '/assets/videos/bg1.mp4',
 ];
 
-// Install Event
+// Install Event - Cache all predefined assets
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('Caching specified assets...');
-      return Promise.all(
-        ASSETS_TO_CACHE.map((url) => {
-          return fetch(url).then((response) => {
-            if (response.ok) {
-              return cache.put(url, response);
-            }
-            throw new Error(`Failed to fetch ${url}`);
-          });
-        })
-      );
-    })
+      return cache.addAll(ASSETS_TO_CACHE);
+    }).then(() => console.log('Assets cached successfully!'))
   );
   self.skipWaiting();
 });
 
-// Activate Event
+// Activate Event - Clean up old caches
 self.addEventListener('activate', (event) => {
-  console.log('Service worker activated!');
   event.waitUntil(
     caches.keys().then((cacheNames) =>
       Promise.all(
@@ -64,31 +47,24 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch Event
+// Fetch Event - Stale-While-Revalidate Strategy
 self.addEventListener('fetch', (event) => {
   const requestUrl = new URL(event.request.url);
 
-  // Check if the request is for the /assets or /images folder
-  if (requestUrl.pathname.startsWith('/assets/') || requestUrl.pathname.startsWith('/images/')) {
-    event.respondWith(
-      caches.match(event.request).then((cachedResponse) => {
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-        return fetch(event.request).then((networkResponse) => {
-          return caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, networkResponse.clone());
-            return networkResponse;
-          });
-        });
-      })
-    );
-  } else {
-    // Handle other requests normally
-    event.respondWith(
-      caches.match(event.request).then((cachedResponse) => {
-        return cachedResponse || fetch(event.request);
-      })
-    );
-  }
+  // Ignore external requests
+  if (!requestUrl.origin.includes(self.location.origin)) return;
+
+  event.respondWith(
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.match(event.request).then((cachedResponse) => {
+        const fetchPromise = fetch(event.request).then((networkResponse) => {
+          // Update cache with the latest response
+          cache.put(event.request, networkResponse.clone());
+          return networkResponse;
+        }).catch(() => cachedResponse); // Fallback to cache if network fails
+
+        return cachedResponse || fetchPromise; // Serve cache first, update in background
+      });
+    })
+  );
 });

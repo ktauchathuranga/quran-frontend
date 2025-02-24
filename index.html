@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Al Quran</title>
+		<title>Al Quran - A Divine Guide for the Soul</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="mobile-web-app-capable" content="yes" />
@@ -32,10 +32,10 @@
 		<link rel="stylesheet" href="images/loading/loading.css">
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		
+		<link rel="manifest" href="images/favicon/site.webmanifest">
 		<link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-		<link rel="manifest" href="images/favicon/site.webmanifest">
 	</head>
 	<body class="is-preload">
 
@@ -86,7 +86,11 @@
 						<!-- Ayah -->
 							<article id="ayah">
 								<h2 class="major">Ayah</h2>
-								<span class="image main"><img src="images/banners/ayah.png" alt="Ayah Section" /></span>
+								<span class="image main"><picture>
+									<source srcset="images/banners/ayah.webp" type="image/webp">
+									<img src="images/banners/ayah.png" alt="UPzz..">
+								</picture>
+								</span>
 								<form id="ayahForm">
 									<label for="ayahChapter">Select Chapter:</label>
 									<select id="ayahChapter" name="chapter" required>
@@ -120,7 +124,11 @@
 						<!-- Surah -->
 							<article id="surah">
 								<h2 class="major">Surah</h2>
-								<span class="image main"><img src="images/banners/surah.png" alt="Surah Section" /></span>
+								<span class="image main"><picture>
+									<source srcset="images/banners/surah.webp" type="image/webp">
+									<img src="images/banners/surah.png" alt="UPzz..">
+								</picture>
+								</span>
 								<form id="surahForm">
 									<label for="surahChapter">Select Chapter:</label>
 									<select id="surahChapter" name="chapter" required>
@@ -144,7 +152,11 @@
 						<!-- Mood -->
 						<article id="mood">
 							<h2 class="major">Mood</h2>
-							<span class="image main"><img src="images/banners/mood.png" alt="" /></span>
+							<span class="image main"><picture>
+								<source srcset="images/banners/mood.webp" type="image/webp">
+								<img src="images/banners/mood.png" alt="UPzz..">
+							</picture>
+							</span>
 							<h3>How are you feeling today?</h3>							
 							<!-- Buttons for each feeling -->
 							<section>
@@ -169,7 +181,11 @@
 						<!-- About -->
 						<article id="about">
 							<h2 class="major">About</h2>
-							<span class="image main"><img src="images/banners/about.png" alt="" /></span>
+							<span class="image main"><picture>
+								<source srcset="images/banners/about.webp" type="image/webp">
+								<img src="images/banners/about.png" alt="UPzz..">
+							</picture>
+							</span>
 							<p>This project is a reflection of a personal journey, a journey of seeking deeper understanding and exploring the sacred words of the Quran. <em>Allah (SWT)</em> revealed the Quran to the <em>Prophet Muhammad (peace be upon him)</em> as a guidance for all of humanity. Since then, generations of believers have carried this divine message, memorizing it, reflecting upon it, and living by its wisdom.</p>
 							<p>The Quran is a timeless treasure, its verses are a light that illuminates the path of those who seek knowledge, peace, and closeness to <em>Allah</em>. This platform was created to share that light, offering a way for people to engage with the Quran in a meaningful and accessible manner. <em>May this journey bring you closer to the divine and deepen your connection with the words of Allah (SWT).</em></p>
 							<h3>Contributors</h3>
@@ -540,7 +556,14 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script>
 				window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 			  </script>
-			  <script defer src="/_vercel/insights/script.js"></script>
+			  <script defer src="/_vercel/insights/script.js">
+			</script>
+			
+			<script>
+				window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+			  </script>
+			  <script defer src="/_vercel/speed-insights/script.js">
+			</script>
 
 	</body>
 </html>
