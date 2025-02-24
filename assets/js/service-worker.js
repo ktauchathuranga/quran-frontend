@@ -1,6 +1,6 @@
 const CACHE_NAME = 'website-cache-v2';
 const ASSETS_TO_CACHE = [
-  '/', '/index.html', '/manifest.json', '/robot.txt', '/sitemap.xml', '/version.json',
+  '/', '/index.html', '/manifest.json', '/robots.txt', '/sitemap.xml', '/version.json',
   // CSS
   '/assets/css/fontawesome-all.min.css',
   '/assets/css/main.css',
