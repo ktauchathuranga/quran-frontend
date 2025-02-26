@@ -229,38 +229,6 @@
 					</p>
 				</footer>
 				
-				<script>
-					fetch('version.json')
-						.then(response => response.json())
-						.then(data => {
-							const versionElement = document.getElementById('version');
-							const versionLink = document.getElementById('version-link');
-							
-							versionElement.textContent = data.version;
-							versionLink.href = `https://github.com/ktauchathuranga/quran-frontend/releases/tag/v${data.version}`;
-						})
-						.catch(error => {
-							console.error('Error fetching version:', error);
-							document.getElementById('version').textContent = "Unknown";
-						});
-				</script>
-				<script>
-				// Service Worker registration code
-				if ('serviceWorker' in navigator) {
-					window.addEventListener('load', () => {
-					navigator.serviceWorker.register('/assets/js/service-worker.js')
-						.then(() => {
-						console.log('Service Worker registered successfully');
-						})
-						.catch((error) => {
-						console.log('Service Worker registration failed:', error);
-						});
-					});
-				}
-				</script>
-				
-				
-
 			</div>
 
 		<!-- BG -->
@@ -271,6 +239,43 @@
 			</div>
 
 		<!-- Scripts -->
+
+			<script>
+				document.addEventListener("DOMContentLoaded", function () {
+				fetchVersion();
+				});
+			
+				function fetchVersion() {
+				fetch('version.json')
+					.then(response => response.json())
+					.then(data => {
+					const versionElement = document.getElementById('version');
+					const versionLink = document.getElementById('version-link');
+			
+					versionElement.textContent = data.version;
+					versionLink.href = `https://github.com/ktauchathuranga/quran-frontend/releases/tag/v${data.version}`;
+					})
+					.catch(error => {
+					console.error('Error fetching version:', error);
+					document.getElementById('version').textContent = "Unknown";
+					});
+				}
+			</script>				  
+			<script>
+			// Service Worker registration code
+			if ('serviceWorker' in navigator) {
+				window.addEventListener('load', () => {
+				navigator.serviceWorker.register('/assets/js/service-worker.js')
+					.then(() => {
+					console.log('Service Worker registered successfully');
+					})
+					.catch((error) => {
+					console.log('Service Worker registration failed:', error);
+					});
+				});
+			}
+			</script>
+
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
