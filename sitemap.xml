@@ -6,6 +6,11 @@
 		<lastmod>2025-02-23</lastmod>
 	</url>
 	<url>
+		<loc>http://www.localhost:8080/why-you-here.html</loc>
+		<priority>0.50</priority>
+		<lastmod>2025-02-26</lastmod>
+	</url>
+	<url>
 		<loc>http://www.localhost:8080/404.html</loc>
 		<priority>0.00</priority>
 		<lastmod>2025-02-24</lastmod>
