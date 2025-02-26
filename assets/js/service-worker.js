@@ -13,19 +13,19 @@ const ASSETS_TO_CACHE = [
   '/assets/js/jquery.min.js',
   '/assets/js/main.js',
   '/assets/js/mood.js',
-  '/assets/js/pwa-install-notification',
+  '/assets/js/pwa-install-notification.js',
   '/assets/js/random-verse.js',
-  // '/assets/js/service-worker.js',
+  '/assets/js/service-worker.js',
   '/assets/js/util.js',
   // Videos
   '/assets/videos/bg1.webm',
   // Images
-  '/assets/images/404.webp',
-  '/assets/images/bg.webp',
-  '/assets/images/banners/about.webp',
-  '/assets/images/banners/ayah.webp',
-  '/assets/images/banners/mood.webp',
-  '/assets/images/banners/surah.webp',
+  '/images/404.webp',
+  '/images/bg.webp',
+  '/images/banners/about.webp',
+  '/images/banners/ayah.webp',
+  '/images/banners/mood.webp',
+  '/images/banners/surah.webp',
 ];
 
 self.addEventListener('install', (event) => {
