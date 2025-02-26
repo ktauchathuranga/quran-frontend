@@ -13,7 +13,7 @@ const ASSETS_TO_CACHE = [
   '/assets/js/jquery.min.js',
   '/assets/js/main.js',
   '/assets/js/mood.js',
-  '/assets/js/pwa-install-notification.js',
+  '/assets/js/pwa-install-notification',
   '/assets/js/random-verse.js',
   // '/assets/js/service-worker.js',
   '/assets/js/util.js',
