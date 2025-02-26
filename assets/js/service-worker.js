@@ -28,18 +28,23 @@ const ASSETS_TO_CACHE = [
   '/assets/images/banners/surah.webp',
 ];
 
-/**
- * Install Event - Caches predefined assets.
- */
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(ASSETS_TO_CACHE))
-      .then(() => console.log('Service Worker: Assets cached successfully.'))
-      .catch((error) => console.error('Service Worker: Asset caching failed', error))
+      .then(async (cache) => {
+        for (const asset of ASSETS_TO_CACHE) {
+          try {
+            await cache.add(asset);
+          } catch (error) {
+            console.error(`Failed to cache ${asset}:`, error);
+          }
+        }
+      })
+      .then(() => console.log('Service Worker: Assets cached (with possible errors).'))
   );
   self.skipWaiting();
 });
+
 
 /**
  * Activate Event - Cleans up old caches.
