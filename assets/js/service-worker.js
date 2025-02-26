@@ -45,7 +45,6 @@ self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
 
-
 /**
  * Activate Event - Cleans up old caches.
  */
@@ -72,22 +71,29 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const requestUrl = new URL(event.request.url);
 
-  // Ignore external requests
+  // Ignore external requests (requests not from the same origin)
   if (requestUrl.origin !== self.location.origin) return;
 
   event.respondWith(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.match(event.request).then((cachedResponse) => {
+        // Attempt to fetch the request from the network (revalidate)
         const fetchPromise = fetch(event.request)
           .then((networkResponse) => {
-            cache.put(event.request, networkResponse.clone());
+            // If network request is successful, update the cache with the new response
+            if (networkResponse && networkResponse.ok) {
+              cache.put(event.request, networkResponse.clone());
+            }
             return networkResponse;
           })
           .catch((error) => {
             console.warn('Service Worker: Network request failed, serving cached response if available.', error);
+            // Serve the cached response if the network request fails
             return cachedResponse;
           });
 
+        // If cachedResponse exists, return it immediately (stale)
+        // If not, return the fetchPromise to fetch from the network
         return cachedResponse || fetchPromise;
       });
     })
