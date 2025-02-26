@@ -15,7 +15,7 @@ const ASSETS_TO_CACHE = [
   '/assets/js/mood.js',
   '/assets/js/pwa-install-notification.js',
   '/assets/js/random-verse.js',
-  '/assets/js/service-worker.js',
+  // '/assets/js/service-worker.js',
   '/assets/js/util.js',
   // Videos
   '/assets/videos/bg1.webm',
