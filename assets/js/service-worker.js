@@ -111,8 +111,8 @@ self.addEventListener('push', (event) => {
   const title = notificationData.notification?.title || "New Notification";
   const options = {
     body: notificationData.notification?.body || "You have a new message.",
-    icon: notificationData.notification?.icon || "/images/notification-icon.png",
-    badge: notificationData.notification?.badge || "/images/badge-icon.png",
+    icon: notificationData.notification?.icon || "/images/pwa/icons/android/android-launchericon-512-512.png",
+    badge: notificationData.notification?.badge || "/images/pwa/icons/android/android-launchericon-512-512.png",
     vibrate: [200, 100, 200],
     data: { url: url }  // Store the URL in the notification's data field
   };
