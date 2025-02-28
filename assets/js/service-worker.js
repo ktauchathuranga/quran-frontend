@@ -96,16 +96,25 @@ self.addEventListener('push', (event) => {
   let notificationData = {};
 
   if (event.data) {
-    notificationData = event.data.json();
+    try {
+      notificationData = event.data.json();
+      console.log("Notification Data:", notificationData);  // Log to see structure of the data
+    } catch (error) {
+      console.error('Error parsing push event data:', error);
+    }
   }
 
-  const title = notificationData.title || "New Notification";
+  // Extract URL from the click_action field (similar to the tutorial)
+  const url = notificationData.notification?.click_action || '/';  // Default fallback if URL is not found
+  console.log("Extracted URL:", url); // Log to confirm the URL extraction
+
+  const title = notificationData.notification?.title || "New Notification";
   const options = {
-    body: notificationData.body || "You have a new message.",
-    icon: notificationData.icon || "/images/notification-icon.png",
-    badge: notificationData.badge || "/images/badge-icon.png",
+    body: notificationData.notification?.body || "You have a new message.",
+    icon: notificationData.notification?.icon || "/images/notification-icon.png",
+    badge: notificationData.notification?.badge || "/images/badge-icon.png",
     vibrate: [200, 100, 200],
-    data: notificationData.data || { url: "/" }
+    data: { url: url }  // Store the URL in the notification's data field
   };
 
   event.waitUntil(
@@ -116,9 +125,12 @@ self.addEventListener('push', (event) => {
 // ✅ Handle Notification Click Event
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
-  
+
   const urlToOpen = event.notification.data.url || '/';
   
+  // Log the URL that will be opened to the console
+  console.log("Opening URL:", urlToOpen);
+
   event.waitUntil(
     clients.matchAll({ type: 'window', includeUncontrolled: true })
       .then((clientList) => {
