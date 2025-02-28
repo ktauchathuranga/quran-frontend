@@ -293,28 +293,39 @@
 							const registration = await navigator.serviceWorker.register('/assets/js/service-worker.js');
 							console.log('Service Worker registered successfully');
 
-							// Get FCM Token
-							getToken(messaging, {
-								serviceWorkerRegistration: registration,  // Fixed missing parameter
-								vapidKey: 'BJ9d1mh1fPhcGggbzPrd8iLOFY8dQyE3hEgbxVZC09ocQsGJ6r6Qf8-gF_k6S3zkU2WURCgGwQZ-xwFWvrhMLZY'
-							})
-							.then((currentToken) => {
-								if (currentToken) {
-									console.log('FCM Token:', currentToken);
-									// Send the token to the server if needed
-								} else {
-									console.warn('No registration token available. Request permission to generate one.');
+							// Wait for the registration to be fully active
+							registration.onupdatefound = () => {
+								const installingWorker = registration.installing;
+								if (installingWorker) {
+									installingWorker.onstatechange = () => {
+										if (installingWorker.state === 'activated') {
+											// Once the service worker is activated, get the FCM token
+											getToken(messaging, {
+												serviceWorkerRegistration: registration,
+												vapidKey: 'BJ9d1mh1fPhcGggbzPrd8iLOFY8dQyE3hEgbxVZC09ocQsGJ6r6Qf8-gF_k6S3zkU2WURCgGwQZ-xwFWvrhMLZY'
+											})
+											.then((currentToken) => {
+												if (currentToken) {
+													console.log('FCM Token:', currentToken);
+													// Send the token to the server if needed
+												} else {
+													console.warn('No registration token available. Request permission to generate one.');
+												}
+											})
+											.catch((err) => {
+												console.error('Error retrieving token:', err);
+											});
+										}
+									};
 								}
-							})
-							.catch((err) => {
-								console.error('Error retrieving token:', err);
-							});
+							};
 
 						} catch (error) {
 							console.error('Service Worker registration failed:', error);
 						}
 					});
 				}
+
 			</script>
 
 			<script src="assets/js/jquery.min.js"></script>
