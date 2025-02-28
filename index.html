@@ -261,19 +261,60 @@
 					});
 				}
 			</script>				  
-			<script>
-			// Service Worker registration code
-			if ('serviceWorker' in navigator) {
-				window.addEventListener('load', () => {
-				navigator.serviceWorker.register('/assets/js/service-worker.js')
-					.then(() => {
-					console.log('Service Worker registered successfully');
-					})
-					.catch((error) => {
-					console.log('Service Worker registration failed:', error);
+
+			<script type="module">
+				// Import the functions you need from the SDKs you need
+				import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+				import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-messaging.js";
+				import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-analytics.js";
+				// TODO: Add SDKs for Firebase products that you want to use
+				// https://firebase.google.com/docs/web/setup#available-libraries
+			
+				// Your web app's Firebase configuration
+				// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+				const firebaseConfig = {
+				apiKey: "AIzaSyB8MgcN7EMEHhO9YD9EcpRkKa670rlCUNM",
+				authDomain: "al-quran-37433.firebaseapp.com",
+				projectId: "al-quran-37433",
+				storageBucket: "al-quran-37433.firebasestorage.app",
+				messagingSenderId: "88815951586",
+				appId: "1:88815951586:web:6768026be2aba3c48548bb",
+				measurementId: "G-RT70TWX17Y"
+				};
+			
+				// Initialize Firebase
+				const app = initializeApp(firebaseConfig);
+				const messaging = getMessaging(app);
+				const analytics = getAnalytics(app);
+
+				if ('serviceWorker' in navigator) {
+					window.addEventListener('load', async () => {
+						try {
+							const registration = await navigator.serviceWorker.register('/assets/js/service-worker.js');
+							console.log('Service Worker registered successfully');
+
+							// Get FCM Token
+							getToken(messaging, {
+								serviceWorkerRegistration: registration,  // Fixed missing parameter
+								vapidKey: 'BJ9d1mh1fPhcGggbzPrd8iLOFY8dQyE3hEgbxVZC09ocQsGJ6r6Qf8-gF_k6S3zkU2WURCgGwQZ-xwFWvrhMLZY'
+							})
+							.then((currentToken) => {
+								if (currentToken) {
+									console.log('FCM Token:', currentToken);
+									// Send the token to the server if needed
+								} else {
+									console.warn('No registration token available. Request permission to generate one.');
+								}
+							})
+							.catch((err) => {
+								console.error('Error retrieving token:', err);
+							});
+
+						} catch (error) {
+							console.error('Service Worker registration failed:', error);
+						}
 					});
-				});
-			}
+				}
 			</script>
 
 			<script src="assets/js/jquery.min.js"></script>
