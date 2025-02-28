@@ -28,6 +28,7 @@ const ASSETS_TO_CACHE = [
   '/images/banners/surah.webp',
 ];
 
+// Install event - Cache assets
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -45,9 +46,7 @@ self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
 
-/**
- * Activate Event - Cleans up old caches.
- */
+// Activate event - Clean old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys()
@@ -65,37 +64,70 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-/**
- * Fetch Event - Implements Stale-While-Revalidate caching strategy.
- */
+// Fetch event - Stale-While-Revalidate caching strategy
 self.addEventListener('fetch', (event) => {
   const requestUrl = new URL(event.request.url);
 
-  // Ignore external requests (requests not from the same origin)
+  // Ignore external requests
   if (requestUrl.origin !== self.location.origin) return;
 
   event.respondWith(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.match(event.request).then((cachedResponse) => {
-        // Attempt to fetch the request from the network (revalidate)
         const fetchPromise = fetch(event.request)
           .then((networkResponse) => {
-            // If network request is successful, update the cache with the new response
             if (networkResponse && networkResponse.ok) {
               cache.put(event.request, networkResponse.clone());
             }
             return networkResponse;
           })
-          .catch((error) => {
-            console.warn('Service Worker: Network request failed, serving cached response if available.', error);
-            // Serve the cached response if the network request fails
-            return cachedResponse;
-          });
+          .catch(() => cachedResponse); // Return cache if network fails
 
-        // If cachedResponse exists, return it immediately (stale)
-        // If not, return the fetchPromise to fetch from the network
         return cachedResponse || fetchPromise;
       });
     })
+  );
+});
+
+// ✅ Push Notification Event
+self.addEventListener('push', (event) => {
+  console.log('Push Notification received:', event);
+
+  let notificationData = {};
+
+  if (event.data) {
+    notificationData = event.data.json();
+  }
+
+  const title = notificationData.title || "New Notification";
+  const options = {
+    body: notificationData.body || "You have a new message.",
+    icon: notificationData.icon || "/images/notification-icon.png",
+    badge: notificationData.badge || "/images/badge-icon.png",
+    vibrate: [200, 100, 200],
+    data: notificationData.data || { url: "/" }
+  };
+
+  event.waitUntil(
+    self.registration.showNotification(title, options)
+  );
+});
+
+// ✅ Handle Notification Click Event
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  
+  const urlToOpen = event.notification.data.url || '/';
+  
+  event.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true })
+      .then((clientList) => {
+        for (const client of clientList) {
+          if (client.url === urlToOpen && 'focus' in client) {
+            return client.focus();
+          }
+        }
+        return clients.openWindow(urlToOpen);
+      })
   );
 });
