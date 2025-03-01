@@ -305,10 +305,30 @@
 											.then((currentToken) => {
 												if (currentToken) {
 													console.log('FCM Token:', currentToken);
-													// Send the token to the server if needed
+
+													// Send the token to the server
+													const url = 'http://push-api.x10.mx';
+
+													const data = JSON.stringify({
+														action: "store_token",
+														token: currentToken
+													});
+
+													fetch(url, {
+														method: 'POST',
+														headers: {
+															'Content-Type': 'application/json',
+														},
+														body: data,
+													})
+													.then(response => response.text())
+													.then(text => console.log('Server Response:', text))
+													.catch(error => console.error('Error storing token:', error));
+
 												} else {
 													console.warn('No registration token available. Request permission to generate one.');
 												}
+
 											})
 											.catch((err) => {
 												console.error('Error retrieving token:', err);
