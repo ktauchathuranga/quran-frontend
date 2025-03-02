@@ -98,15 +98,17 @@ self.addEventListener('push', (event) => {
   if (event.data) {
     try {
       notificationData = event.data.json();
-      console.log("Notification Data:", notificationData);  // Log to see structure of the data
+      console.log("Notification Data:", notificationData);
     } catch (error) {
       console.error('Error parsing push event data:', error);
     }
   }
 
-  // Extract URL from the click_action field (similar to the tutorial)
-  const url = notificationData.notification?.click_action || '/';  // Default fallback if URL is not found
-  console.log("Extracted URL:", url); // Log to confirm the URL extraction
+  // Extract URL from both possible locations
+  const url = notificationData.notification?.click_action || 
+              notificationData.webpush?.fcm_options?.link || 
+              '/';
+  console.log("Extracted URL:", url);
 
   const title = notificationData.notification?.title || "New Notification";
   const options = {
@@ -114,7 +116,7 @@ self.addEventListener('push', (event) => {
     icon: notificationData.notification?.icon || "/images/pwa/icons/android/android-launchericon-512-512.png",
     badge: notificationData.notification?.badge || "/images/pwa/icons/android/android-launchericon-512-512.png",
     vibrate: [200, 100, 200],
-    data: { url: url }  // Store the URL in the notification's data field
+    data: { url: url }
   };
 
   event.waitUntil(
