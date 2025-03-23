@@ -222,20 +222,9 @@ const populateEditions = async () => {
         const result = await response.json();
 
         if (result.status === "success") {
-            // Sort editions alphabetically by language and then by edition name
-            const sortedEditions = result.data.sort((a, b) => {
-                const languageA = languageMap[a.language] || "Unknown Language";
-                const languageB = languageMap[b.language] || "Unknown Language";
-
-                if (languageA === languageB) {
-                    return a.englishName.localeCompare(b.englishName);
-                }
-                return languageA.localeCompare(languageB);
-            });
-
             editionSelectIds.forEach((selectId) => {
                 const dropdown = document.getElementById(selectId);
-                sortedEditions.forEach((edition) => {
+                result.data.forEach((edition) => {
                     const option = document.createElement("option");
                     option.value = edition.id;
 
