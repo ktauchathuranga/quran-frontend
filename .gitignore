@@ -2,3 +2,8 @@ help.txt
 noti.py
 al-quran-37433-firebase-adminsdk-fbsvc-6af4936dcb.json
 test.py
+
+# PrivilegeOS build artifacts
+privilegeos_output/
+test_privilegeos_no_exit.sh
+/tmp/privilegeos_build/
