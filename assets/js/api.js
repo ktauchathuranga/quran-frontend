@@ -330,18 +330,19 @@ document.getElementById("surahForm").addEventListener("submit", async (event) =>
                 // Create a container for each ayah
                 const ayahContainer = document.createElement("div");
                 ayahContainer.style.position = "relative";
-                ayahContainer.style.marginBottom = "10px"; // Add some spacing between ayahs
+                ayahContainer.style.marginBottom = "20px"; // Increased from 10px to 20px
 
                 // Create ayah text
                 const ayahText = document.createElement("p");
                 ayahText.id = "ayahText";
                 ayahText.textContent = verse.verse_text;
+                ayahText.style.marginBottom = "30px"; // Add margin to the verse text
 
                 // Create ayah reference
                 const ayahReference = document.createElement("p");
                 ayahReference.id = "ayahReference";
                 ayahReference.style.position = "absolute";
-                ayahReference.style.bottom = "-50px";
+                ayahReference.style.bottom = "-70px"; // Increased from -50px to -70px
                 ayahReference.style.left = "0";
                 ayahReference.style.fontSize = "14px";
                 ayahReference.style.color = "gray";

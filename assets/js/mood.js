@@ -140,14 +140,15 @@ function displayVerses(verses) {
     verses.forEach(verse => {
         const ayahContainer = document.createElement('div');
         ayahContainer.style.position = 'relative';
-        ayahContainer.style.marginBottom = '10px';
+        ayahContainer.style.marginBottom = '50px';
 
         const ayahText = document.createElement('p');
         ayahText.textContent = verse.verse_text;
+        ayahText.style.marginBottom = '30px'; // Add margin to the verse text
 
         const ayahReference = document.createElement('p');
         ayahReference.style.position = 'absolute';
-        ayahReference.style.bottom = '-55px';
+        ayahReference.style.bottom = '-75px'; // Increased from -55px to -75px
         ayahReference.style.left = '0';
         ayahReference.style.fontSize = '14px';
         ayahReference.style.color = 'gray';
